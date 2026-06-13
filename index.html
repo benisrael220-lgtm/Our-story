@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah: Our Story ❤️</title>
+    <style>
+        :root {
+            --primary-pink: #ffb7b2;
+            --dark-pink: #ff8b94;
+            --cream: #fffaf0;
+            --text-color: #4a4a4a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Floating Hearts Canvas */
+        #hearts-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* Sections styling */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        h1, h2 {
+            color: var(--dark-pink);
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Media display styling */
+        .media-container {
+            margin-top: 25px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        img, video {
+            max-width: 100%;
+            max-height: 500px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover, video:hover {
+            transform: scale(1.02);
+        }
+
+        /* Hero / Opening Screen */
+        .hero {
+            background: linear-gradient(rgba(255,183,178,0.3), rgba(255,250,240,0.85)), url('1000044287.jpg') no-repeat center center/cover;
+        }
+
+        /* Button styling */
+        .btn {
+            background-color: var(--dark-pink);
+            color: white;
+            border: none;
+            padding: 12px 26px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #ff6b76;
+            transform: translateY(-2px);
+        }
+
+        /* Modal / Pop-up Box */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--cream);
+            padding: 35px;
+            border-radius: 20px;
+            max-width: 500px;
+            max-height: 70vh;
+            overflow-y: auto;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark-pink);
+            line-height: 1;
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+
+        ol li {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="hearts-canvas"></canvas>
+
+    <!-- Opening Screen -->
+    <section class="hero">
+        <div class="container">
+            <h1>Sarah: Our Story ❤️</h1>
+            <p>"Every picture tells a story, but none of them can fully explain how much you mean to me."</p>
+            <p>This is a look into our journey—the late nights, the loud laughs, the quiet moments, and everything that makes me fall for you over and over again.</p>
+            <p><strong>Welcome to Our Story, Sarah ❤️</strong></p>
+        </div>
+    </section>
+
+    <!-- Page 1: The Energy We Bring -->
+    <section>
+        <div class="container">
+            <h2>No One Else Compares</h2>
+            <p>I love the vibe we share. Whether the music is blasting or we're just making each other laugh, there’s never a dull moment when I'm with you. You bring out the absolute best, most joyful side of me, and I wouldn’t trade these wild, happy memories for anything.</p>
+            <div class="media-container">
+                <video src="1000044203.jpg" controls></video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 2: Late Night Adventures -->
+    <section style="background-color: #fff0f1;">
+        <div class="container">
+            <h2>My Favorite Passenger</h2>
+            <p>Some of my absolute favorite moments are the ones where it's just us, driving through the night, singing along to our favorite songs, and acting completely goofy. Even when the world outside is quiet, being next to you feels like the greatest adventure.</p>
+            <div class="media-container">
+                <video src="1000044267.jpg" controls></video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 3: Captured Memories -->
+    <section>
+        <div class="container">
+            <h2>Frozen in Time</h2>
+            <p>Some moments are so precious you just want to freeze them forever. I love looking back at the snapshots of us because every single one reminds me of how lucky I am to have you by my side. You hold a piece of my heart that belongs entirely to you.</p>
+            <div class="media-container">
+                <img src="1000044270.jpg" alt="Our Captured Moment">
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 4: Things I Love About You -->
+    <section style="background-color: #fff0f1;">
+        <div class="container">
+            <h2>What Makes You Special</h2>
+            <p style="font-style: italic; margin-bottom: 30px;">A few of my favorite things about you...</p>
+            <ul style="list-style: none; font-size: 1.2rem; text-align: left; max-width: 450px; margin: 0 auto 30px auto; line-height: 2;">
+                <li>❤️ The way you make me laugh until my stomach hurts</li>
+                <li>❤️ Your beautiful, radiant energy</li>
+                <li>❤️ The way you hold my hand when we're just chilling</li>
+                <li>❤️ How you can turn any ordinary drive into a concert</li>
+                <li>❤️ The safe, happy space you create just by being you</li>
+            </ul>
+            <button class="btn" onclick="openModal()">Click for 50 Reasons I Love You</button>
+        </div>
+    </section>
+
+    <!-- Page 5: A Letter To Sarah -->
+    <section style="background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('1000044287.jpg') no-repeat center center/cover;">
+        <div class="container">
+            <h2>To The Girl I Love</h2>
+            <div style="text-align: left; max-width: 600px; margin: 0 auto; font-style: italic;">
+                <p>Sarah,</p>
+                <p>Thank you for being my partner in crime, my favorite singer, and the person who brings so much light into my life. Looking through all these memories makes me realize just how beautiful our journey has been so far.</p>
+                <p>Thank you for every smile, every laugh, and every unforgettable moment. I love our story, and I love you.</p>
+                <p style="text-align: right; font-weight: bold; font-size: 1.3rem;">Forever yours, Ben ❤️</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Page -->
+    <section style="background-color: #ffb7b2; color: white;">
+        <div class="container" style="background: rgba(255,255,255,0.15); color: white;">
+            <h2 style="color: white; margin-bottom: 25px;">To Be Continued...</h2>
+            <p>The best chapters of our story haven't even been written yet. This is just the beginning.</p>
+            <h3 style="font-size: 2rem; margin-top: 30px;">Love, Ben ❤️</h3>
+        </div>
+    </section>
+
+    <!-- 50 Reasons Modal Pop-up -->
+    <div id="reasonsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3 style="color: var(--dark-pink); margin-bottom: 20px;">50 Reasons I Love You</h3>
+            <ol>
+                <li>The way your eyes light up when you're genuinely happy.</li>
+                <li>How safe and at peace I feel whenever you're around.</li>
+                <li>Your beautiful, contagious laugh.</li>
+                <li>How incredibly kind you are to everyone.</li>
+                <li>The way you support my dreams.</li>
+                <li>Your beautiful smile that brightens my darkest days.</li>
+                <li>How you can make me laugh even when I don't want to smile.</li>
+                <li>The random, cute text messages you send me.</li>
+                <li>Your warm, perfect hugs.</li>
+                <li>The way you remember the little things I mention in passing.</li>
+                <li>How passionate you are about the things you care about.</li>
+                <li>The sound of your voice.</li>
+                <li>The way you look at me when you think I'm not paying attention.</li>
+                <li>Your unmatched grace and strength.</li>
+                <li>Simply because you are my favorite person, Sarah.</li>
+                <!-- You can add more list items here easily to reach 50! -->
+            </ol>
+        </div>
+    </div>
+
+    <!-- JavaScript for Floating Hearts and Interactivity -->
+    <script>
+        // Modal functions
+        function openModal() {
+            document.getElementById('reasonsModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('reasonsModal').style.display = 'none';
+        }
+        window.onclick = function(event) {
+            let modal = document.getElementById('reasonsModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Floating Hearts Canvas Animation
+        const canvas = document.getElementById('hearts-canvas');
+        const ctx = canvas.getContext('2d');
+        let hearts = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Heart {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 100;
+                this.size = Math.random() * 8 + 5;
+                this.speed = Math.random() * 1 + 0.5;
+                this.opacity = Math.random() * 0.4 + 0.15;
+                this.time = Math.random() * 100;
+                this.swingSpeed = Math.random() * 0.02;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = '#ff8b94';
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y);
+                ctx.bezierCurveTo(this.x - this.size/2, this.y - this.size/2, this.x - this.size, this.y + this.size/3, this.x, this.y + this.size);
+                ctx.bezierCurveTo(this.x + this.size, this.y + this.size/3, this.x + this.size/2, this.y - this.size/2, this.x, this.y);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.y -= this.speed;
+                this.time += this.swingSpeed;
+                this.x += Math.sin(this.time) * 0.4;
+
+                if (this.y < -20) {
+                    this.y = canvas.height + 20;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < 20; i++) {
+                hearts.push(new Heart());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            hearts.forEach(heart => {
+                heart.update();
+                heart.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+    </script>
+</body>
+</html>
