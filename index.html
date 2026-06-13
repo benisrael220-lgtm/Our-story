@@ -26,7 +26,7 @@
             line-height: 1.6;
         }
 
-        /* Floating Hearts Canvas */
+        /* Floating Hearts Background Canvas */
         #hearts-canvas {
             position: fixed;
             top: 0;
@@ -37,75 +37,85 @@
             z-index: 999;
         }
 
-        /* Sections styling */
+        /* Section Layouts */
         section {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
             position: relative;
         }
 
         .container {
             max-width: 800px;
+            width: 100%;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            backdrop-filter: blur(5px);
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+            backdrop-filter: blur(6px);
+            z-index: 2;
         }
 
-        h1, h2 {
+        h1, h2, h3 {
             color: var(--dark-pink);
             margin-bottom: 20px;
         }
 
         p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+            font-size: 1.15rem;
+            margin-bottom: 25px;
         }
 
-        /* Media display styling */
-        .media-container {
-            margin-top: 25px;
+        /* Media Display Layouts */
+        .media-single {
+            margin: 30px auto 10px auto;
+            max-width: 550px;
             width: 100%;
-            display: flex;
-            justify-content: center;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+            width: 100%;
         }
 
         img, video {
-            max-width: 100%;
-            max-height: 500px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            width: 100%;
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #000;
         }
 
         img:hover, video:hover {
             transform: scale(1.02);
+            box-shadow: 0 12px 30px rgba(255,139,148,0.3);
         }
 
-        /* Hero / Opening Screen */
-        .hero {
-            background: linear-gradient(rgba(255,183,178,0.3), rgba(255,250,240,0.85)), url('1000044287.jpg') no-repeat center center/cover;
+        /* Custom color alternation for storytelling flow */
+        .bg-alt {
+            background-color: #fff0f1;
         }
 
-        /* Button styling */
+        /* Button elements */
         .btn {
             background-color: var(--dark-pink);
             color: white;
             border: none;
-            padding: 12px 26px;
-            font-size: 1rem;
-            border-radius: 25px;
+            padding: 14px 30px;
+            font-size: 1.05rem;
+            border-radius: 30px;
             cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s;
-            margin-top: 20px;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 15px;
         }
 
         .btn:hover {
@@ -113,7 +123,7 @@
             transform: translateY(-2px);
         }
 
-        /* Modal / Pop-up Box */
+        /* Pop-up Modal Style */
         .modal {
             display: none;
             position: fixed;
@@ -126,149 +136,167 @@
 
         .modal-content {
             background: var(--cream);
-            padding: 35px;
-            border-radius: 20px;
-            max-width: 500px;
-            max-height: 70vh;
+            padding: 40px;
+            border-radius: 24px;
+            max-width: 550px;
+            max-height: 75vh;
             overflow-y: auto;
             text-align: left;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
         }
 
         .close-modal {
             position: absolute;
-            top: 15px; right: 20px;
-            font-size: 1.8rem;
+            top: 15px; right: 22px;
+            font-size: 2rem;
             cursor: pointer;
             color: var(--dark-pink);
-            line-height: 1;
         }
 
-        ol {
-            padding-left: 20px;
-        }
-
-        ol li {
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-        }
+        ol { padding-left: 20px; }
+        ol li { margin-bottom: 12px; font-size: 1rem; }
     </style>
 </head>
 <body>
 
     <canvas id="hearts-canvas"></canvas>
 
-    <!-- Opening Screen -->
-    <section class="hero">
+    <!-- Phase 1: The Bright Beginning (Welcome Page) -->
+    <section>
         <div class="container">
             <h1>Sarah: Our Story ❤️</h1>
             <p>"Every picture tells a story, but none of them can fully explain how much you mean to me."</p>
-            <p>This is a look into our journey—the late nights, the loud laughs, the quiet moments, and everything that makes me fall for you over and over again.</p>
-            <p><strong>Welcome to Our Story, Sarah ❤️</strong></p>
-        </div>
-    </section>
-
-    <!-- Page 1: The Energy We Bring -->
-    <section>
-        <div class="container">
-            <h2>No One Else Compares</h2>
-            <p>I love the vibe we share. Whether the music is blasting or we're just making each other laugh, there’s never a dull moment when I'm with you. You bring out the absolute best, most joyful side of me, and I wouldn’t trade these wild, happy memories for anything.</p>
-            <div class="media-container">
-                <video src="1000044203.jpg" controls></video>
+            <p>Welcome to a look into our beautiful journey—the warm daylight dates, the loud late nights, the endless laughs, and everything in between.</p>
+            
+            <!-- Visible Main Image Display -->
+            <div class="media-single">
+                <img src="1000044287.jpg" alt="Welcome Image: Us Together">
             </div>
         </div>
     </section>
 
-    <!-- Page 2: Late Night Adventures -->
-    <section style="background-color: #fff0f1;">
+    <!-- Phase 1 Continued: Daytime Hangouts -->
+    <section class="bg-alt">
         <div class="container">
-            <h2>My Favorite Passenger</h2>
-            <p>Some of my absolute favorite moments are the ones where it's just us, driving through the night, singing along to our favorite songs, and acting completely goofy. Even when the world outside is quiet, being next to you feels like the greatest adventure.</p>
-            <div class="media-container">
-                <video src="1000044267.jpg" controls></video>
+            <h2>The Joy in the Ordinary</h2>
+            <p>Some of the most perfect moments are the simple ones spent directly in your company. Just seeing your smile and soaking in the sunlit days alongside you makes any ordinary afternoon unforgettable.</p>
+            
+            <div class="media-grid">
+                <video src="1000044241.mp4" controls></video>
+                <video src="1000044223.mp4" controls></video>
             </div>
         </div>
     </section>
 
-    <!-- Page 3: Captured Memories -->
+    <!-- Phase 2: Turning Up the Energy (The Night Out) -->
     <section>
+        <div class="container">
+            <h2>No One Else Matches Our Vibe</h2>
+            <p>I absolutely love our energy when the music gets loud. You aren't just my girl; you're my favorite teammate, my ultimate partner-in-crime, and the absolute life of the party.</p>
+            
+            <div class="media-grid">
+                <video src="1000044205.mp4" controls poster="1000044203.jpg"></video>
+                <video src="100044237.mp4" controls></video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 3: The After-Hours (Car Rides & Inside Jokes) -->
+    <section class="bg-alt">
+        <div class="container">
+            <h2>Late Night Cruising</h2>
+            <p>Even when the night winds down and the streets get dark, our concert keeps going. From driving around town singing our hearts out to exchanging goofy looks, every journey is a core memory when you're the one sitting next to me.</p>
+            
+            <div class="media-grid">
+                <video src="1000044281.mp4" controls></video>
+                <video src="1000044229.mp4" controls></video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 3 Continued: Unfiltered Laughs -->
+    <section>
+        <div class="container">
+            <h2>The Smile That Stole My Heart</h2>
+            <p>There are millions of laughs in this world, but your raw, unfiltered, crinkle-nosed laugh is my favorite sound on earth. Seeing you genuinely happy makes everything else fade away.</p>
+            
+            <div class="media-single">
+                <img src="1000044267.jpg" alt="Pure Laughs">
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 4: Standing Still (Deep Connection) -->
+    <section class="bg-alt">
         <div class="container">
             <h2>Frozen in Time</h2>
-            <p>Some moments are so precious you just want to freeze them forever. I love looking back at the snapshots of us because every single one reminds me of how lucky I am to have you by my side. You hold a piece of my heart that belongs entirely to you.</p>
-            <div class="media-container">
-                <img src="1000044270.jpg" alt="Our Captured Moment">
+            <p>Amidst all the adventures and loud music, holding you close is exactly where I always want to land. This snapshot reminds me of how safe, content, and completely grateful I am to have you as mine.</p>
+            
+            <div class="media-single" style="max-width: 480px;">
+                <img src="1000044270.jpg" alt="Captured Camera Memory">
             </div>
         </div>
     </section>
 
-    <!-- Page 4: Things I Love About You -->
-    <section style="background-color: #fff0f1;">
+    <!-- Things I Love List Section -->
+    <section>
         <div class="container">
-            <h2>What Makes You Special</h2>
-            <p style="font-style: italic; margin-bottom: 30px;">A few of my favorite things about you...</p>
-            <ul style="list-style: none; font-size: 1.2rem; text-align: left; max-width: 450px; margin: 0 auto 30px auto; line-height: 2;">
-                <li>❤️ The way you make me laugh until my stomach hurts</li>
-                <li>❤️ Your beautiful, radiant energy</li>
-                <li>❤️ The way you hold my hand when we're just chilling</li>
-                <li>❤️ How you can turn any ordinary drive into a concert</li>
-                <li>❤️ The safe, happy space you create just by being you</li>
+            <h2>What Makes You So Special</h2>
+            <p style="font-style: italic; margin-bottom: 30px;">A quick reminder of why I fall for you over and over...</p>
+            <ul style="list-style: none; font-size: 1.2rem; text-align: left; max-width: 500px; margin: 0 auto 30px auto; line-height: 2.2;">
+                <li>❤️ Your magnetic, radiant energy</li>
+                <li>❤️ How you make me laugh until my stomach hurts</li>
+                <li>❤️ The absolute best partner to sing down the highway with</li>
+                <li>❤️ The total comfort and peace I feel by your side</li>
+                <li>❤️ The way you let me act completely goofy with you</li>
             </ul>
             <button class="btn" onclick="openModal()">Click for 50 Reasons I Love You</button>
         </div>
     </section>
 
-    <!-- Page 5: A Letter To Sarah -->
-    <section style="background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('1000044287.jpg') no-repeat center center/cover;">
-        <div class="container">
-            <h2>To The Girl I Love</h2>
-            <div style="text-align: left; max-width: 600px; margin: 0 auto; font-style: italic;">
+    <!-- Final Page / Love Note -->
+    <section style="background-color: #ffb7b2; color: white;">
+        <div class="container" style="background: rgba(255, 255, 255, 0.15); color: white;">
+            <h2 style="color: white; font-size: 2.2rem; margin-bottom: 25px;">To Be Continued...</h2>
+            <div style="text-align: left; max-width: 600px; margin: 0 auto; font-style: italic; font-size: 1.2rem; line-height: 1.8;">
                 <p>Sarah,</p>
-                <p>Thank you for being my partner in crime, my favorite singer, and the person who brings so much light into my life. Looking through all these memories makes me realize just how beautiful our journey has been so far.</p>
-                <p>Thank you for every smile, every laugh, and every unforgettable moment. I love our story, and I love you.</p>
-                <p style="text-align: right; font-weight: bold; font-size: 1.3rem;">Forever yours, Ben ❤️</p>
+                <br>
+                <p>Thank you for the spontaneous adventures, the jam sessions, the late-night car rides, and for being completely you. Looking through all these memories makes me realize how incredibly lucky I am to have our stories woven together.</p>
+                <br>
+                <p>The best chapters of our story haven't even happened yet. This isn't the end—it's just the beginning.</p>
+                <br>
+                <h3 style="text-align: right; color: white; font-size: 2rem; margin-top: 20px;">Love, Ben ❤️</h3>
             </div>
         </div>
     </section>
 
-    <!-- Final Page -->
-    <section style="background-color: #ffb7b2; color: white;">
-        <div class="container" style="background: rgba(255,255,255,0.15); color: white;">
-            <h2 style="color: white; margin-bottom: 25px;">To Be Continued...</h2>
-            <p>The best chapters of our story haven't even been written yet. This is just the beginning.</p>
-            <h3 style="font-size: 2rem; margin-top: 30px;">Love, Ben ❤️</h3>
-        </div>
-    </section>
-
-    <!-- 50 Reasons Modal Pop-up -->
+    <!-- 50 Reasons Interactive Modal -->
     <div id="reasonsModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
-            <h3 style="color: var(--dark-pink); margin-bottom: 20px;">50 Reasons I Love You</h3>
+            <h3 style="color: var(--dark-pink); margin-bottom: 20px; border-bottom: 2px solid var(--primary-pink); padding-bottom: 10px;">50 Reasons I Love You</h3>
             <ol>
-                <li>The way your eyes light up when you're genuinely happy.</li>
+                <li>The way your eyes light up when we are having pure fun.</li>
                 <li>How safe and at peace I feel whenever you're around.</li>
                 <li>Your beautiful, contagious laugh.</li>
-                <li>How incredibly kind you are to everyone.</li>
-                <li>The way you support my dreams.</li>
-                <li>Your beautiful smile that brightens my darkest days.</li>
-                <li>How you can make me laugh even when I don't want to smile.</li>
-                <li>The random, cute text messages you send me.</li>
-                <li>Your warm, perfect hugs.</li>
-                <li>The way you remember the little things I mention in passing.</li>
-                <li>How passionate you are about the things you care about.</li>
-                <li>The sound of your voice.</li>
+                <li>How incredibly kind and radiant your spirit is.</li>
+                <li>The way you match my energy perfectly.</li>
+                <li>Your beautiful smile that brightens my entire day.</li>
+                <li>How you can make me laugh even over the simplest things.</li>
+                <li>The absolute blast we have during late-night car rides.</li>
+                <li>Your warm, perfect presence.</li>
                 <li>The way you look at me when you think I'm not paying attention.</li>
-                <li>Your unmatched grace and strength.</li>
+                <li>How amazing it is to just drive and sing along to our favorite songs together.</li>
                 <li>Simply because you are my favorite person, Sarah.</li>
-                <!-- You can add more list items here easily to reach 50! -->
+                <!-- Feel free to continue adding customized lines below here! -->
             </ol>
         </div>
     </div>
 
-    <!-- JavaScript for Floating Hearts and Interactivity -->
+    <!-- Scripting for Interactions & Floating Canvas Hearts -->
     <script>
-        // Modal functions
+        // Modal Event Handlers
         function openModal() {
             document.getElementById('reasonsModal').style.display = 'flex';
         }
@@ -282,7 +310,7 @@
             }
         }
 
-        // Floating Hearts Canvas Animation
+        // Canvas Heart Generator
         const canvas = document.getElementById('hearts-canvas');
         const ctx = canvas.getContext('2d');
         let hearts = [];
@@ -330,7 +358,7 @@
         }
 
         function init() {
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 22; i++) {
                 hearts.push(new Heart());
             }
         }
