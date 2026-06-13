@@ -123,6 +123,26 @@
             transform: translateY(-2px);
         }
 
+        /* Floating Music Widget Layout */
+        #music-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1001;
+        }
+
+        #music-btn {
+            margin: 0;
+            padding: 12px 22px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            font-weight: bold;
+        }
+
         /* Pop-up Modal Style */
         .modal {
             display: none;
@@ -162,6 +182,15 @@
 
     <canvas id="hearts-canvas"></canvas>
 
+    <!-- Floating Background Music Player -->
+    <div id="music-container">
+        <button id="music-btn" class="btn">
+            <span id="music-icon">🎵</span> <span id="music-text">Play "Please Me"</span>
+        </button>
+        <!-- Place your audio track file in the same folder and name it please_me.mp3 -->
+        <audio id="bg-music" loop src="please_me.mp3"></audio>
+    </div>
+
     <!-- Phase 1: The Bright Beginning (Welcome Page) -->
     <section>
         <div class="container">
@@ -169,7 +198,6 @@
             <p>"Every picture tells a story, but none of them can fully explain how much you mean to me."</p>
             <p>Welcome to a look into our beautiful journey—the warm daylight dates, the loud late nights, the endless laughs, and everything in between.</p>
             
-            <!-- Visible Main Image Display -->
             <div class="media-single">
                 <img src="1000044287.jpg" alt="Welcome Image: Us Together">
             </div>
@@ -197,7 +225,7 @@
             
             <div class="media-grid">
                 <video src="1000044205.mp4" controls poster="1000044203.jpg"></video>
-                <video src="100044237.mp4" controls></video>
+                <video src="1000044237.mp4" controls></video>
             </div>
         </div>
     </section>
@@ -289,14 +317,39 @@
                 <li>The way you look at me when you think I'm not paying attention.</li>
                 <li>How amazing it is to just drive and sing along to our favorite songs together.</li>
                 <li>Simply because you are my favorite person, Sarah.</li>
-                <!-- Feel free to continue adding customized lines below here! -->
             </ol>
         </div>
     </div>
 
-    <!-- Scripting for Interactions & Floating Canvas Hearts -->
+    <!-- Scripting for Audio Control, Interactions & Floating Hearts -->
     <script>
-        // Modal Event Handlers
+        // Audio Toggle Mechanics
+        const musicBtn = document.getElementById('music-btn');
+        const audio = document.getElementById('bg-music');
+        const musicIcon = document.getElementById('music-icon');
+        const musicText = document.getElementById('music-text');
+        let isPlaying = false;
+
+        musicBtn.addEventListener('click', () => {
+            if (!isPlaying) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    musicIcon.innerText = '⏸️';
+                    musicText.innerText = 'Pause Tune';
+                    musicBtn.style.background = '#ff6b76';
+                }).catch(err => {
+                    alert("Audio file 'please_me.mp3' not found in folder. Check your naming layout!");
+                });
+            } else {
+                audio.pause();
+                isPlaying = false;
+                musicIcon.innerText = '🎵';
+                musicText.innerText = 'Play "Please Me"';
+                musicBtn.style.background = 'var(--dark-pink)';
+            }
+        });
+
+        // Modal Logic
         function openModal() {
             document.getElementById('reasonsModal').style.display = 'flex';
         }
@@ -310,7 +363,7 @@
             }
         }
 
-        // Canvas Heart Generator
+        // Canvas Floating Hearts Animation
         const canvas = document.getElementById('hearts-canvas');
         const ctx = canvas.getContext('2d');
         let hearts = [];
